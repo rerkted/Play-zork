@@ -1,6 +1,6 @@
 # Zork Packer Adventure: AWS Edition 🌌✨
 
-##Welcome to a mystical journey through the realms of AWS, where we harness the ancient powers of Terraform and Packer to summon the legendary game of Zork right into the cloud. Step into a world where code and fiction intertwine, and every terraform apply beckons you closer to the Great Underground Empire.
+##Welcome to a mystical journey through the realms of AWS, where we harness the ancient powers of Hashicorp Packer to summon the legendary game of Zork right into the cloud. Step into a world where code and fiction intertwine, and every terraform apply beckons you closer to the Great Underground Empire.
 
 Overview 📜
 
