@@ -1,0 +1,64 @@
+ {
+
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_region": "{{env `AWS_REGION`}}",
+    "ami_name": "{{env `BUILD_AMI_NAME`}}"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "vpc_id": "vpc-071cac857d04b72c9",
+      "subnet_id": "subnet-0659bd81e42760f09",
+      "region": "us-east-1",
+      "associate_public_ip_address": true,
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "zork-final",
+      "source_ami":"ami-09e67e426f25ce0d7"
+     }
+ ],  
+ 
+   "provisioners": [
+    { 
+        "type": "shell",
+        "script": "script.sh" 
+    },
+    {
+      "type": "file",
+      "source": "zork1.zip",
+      "destination": "/home/ubuntu/"
+    }, 
+    {
+      "type": "file",
+      "source": "frotz.service",
+      "destination": "/home/ubuntu/"
+    }, 
+    {
+      "type": "file",
+      "source":  "zork-run.sh",
+      "destination": "/home/ubuntu/"
+    }, 
+    {
+      "type": "shell",
+      "inline": [ "sleep 10",
+        "sudo chmod 777 ~/ubuntu/frotz.service",
+          "sleep 10",
+        "sudo cp /home/ubuntu/frotz.service /etc/systemd/system",
+          "sleep 10",
+        "sudo unzip /home/ubuntu/zork1.zip",
+        "sudo chmod +x /home/ubuntu/zork-run.sh",
+        "echo let's get systemctl started",
+          "sleep 10",
+        "sudo systemctl daemon-reload",
+          "sleep 5",
+        "sudo systemctl enable frotz.service",
+          "sleep 5",
+        "sudo systemctl start frotz.service"]
+    
+    }
+  ]
+}

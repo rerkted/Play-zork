@@ -1,0 +1,10 @@
+[Unit]
+Description=start Zork on boot
+
+[Service]
+#Type=simple
+User=ubuntu
+ExecStart=/bin/bash /home/ubuntu/zork-run.sh
+
+[Install]
+WantedBy=multi-user.target
