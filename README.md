@@ -1,6 +1,6 @@
-# play-zork1
+# Zork Terraform Adventure: AWS Edition 🌌✨
 
-
+Adventure Summary 
 
 ## Getting started
 
